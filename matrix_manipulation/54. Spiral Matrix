@@ -1,0 +1,33 @@
+// DRAFT SOLUTION
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> result = new ArrayList<Integer>();
+        if (matrix.length == 0 || matrix[0].length == 0) return result;
+        int maxY = matrix.length - 1;
+        int maxX = matrix[0].length - 1;
+        int xIncr = 1;
+        int yIncr = 0;
+        int minX = 0;
+        int minY = 0;
+        int currX = 0;
+        int currY = 0;
+        
+        while (result.size() < matrix[0].length * matrix.length){
+            result.add(matrix[currY][currX]);
+            if (currX + xIncr > maxX | currX + xIncr < minX){
+                yIncr = xIncr * 1;
+                xIncr = 0;
+                if (yIncr>0) {minY++;}
+                if (yIncr<0) {maxY--;}
+            } else if (currY + yIncr > maxY | currY + yIncr < minY){
+                xIncr = yIncr * -1;
+                yIncr = 0;
+                if (xIncr>0) {minX++;}
+                if (xIncr<0) {maxX--;}
+            }
+            currX = currX + xIncr;
+            currY = currY + yIncr;
+        }
+        return result;
+    }
+}
