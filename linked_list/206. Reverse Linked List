@@ -1,0 +1,57 @@
+// ITERATIVE APPROACH
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null) return null;
+        if (head.next == null) return head;
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode nextTemp;
+        while (curr != null){
+            nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+    return prev;
+    }
+}
+
+// BAD APPROACH WITH STACK
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null) return null;
+        if (head.next == null) return head;
+        Stack<ListNode> nodes = new Stack<ListNode>();
+        
+        ListNode currentNode = head;
+        while (currentNode != null){
+            nodes.push(currentNode);
+            currentNode = currentNode.next;    
+        }
+        
+        ListNode responce = nodes.pop();
+        currentNode = responce;
+        while (!nodes.isEmpty()){
+            currentNode.next = nodes.pop();
+            currentNode = currentNode.next;
+        }
+        currentNode.next = null;
+        return responce;
+    }
+}
