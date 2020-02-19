@@ -1,0 +1,30 @@
+// Straidforward.
+class Solution {
+    public int balancedStringSplit(String s) {
+        int rCount = 0;
+        int lCount = 0;
+        int counter = 0;
+        for (char curr: s.toCharArray()){
+            if (curr == 'R') rCount++; else lCount++;
+            if (rCount==lCount){
+                counter++;
+                rCount = 0;
+                lCount = 0;
+            }
+        }
+        return counter;
+    }
+}
+
+// A bit cleaner.
+class Solution {
+    public int balancedStringSplit(String s) {
+        int balanceCounter = 0;
+        int counter = 0;
+        for (char curr: s.toCharArray()){
+            balanceCounter += (curr == 'R') ? 1 : -1;
+            if (balanceCounter == 0) counter++;
+        }
+        return counter;
+    }
+}
