@@ -1,0 +1,16 @@
+class Solution {
+    public int findNumbers(int[] nums) {
+        int evenCounter = 0;
+        for (int currNum: nums){
+            int digitsCounter = 0;
+            while (currNum >= 1){
+                digitsCounter++;
+                currNum /= 10;
+            }
+            if (digitsCounter % 2 == 0) {
+                evenCounter++;
+            }
+        }
+        return evenCounter;
+    }
+}
