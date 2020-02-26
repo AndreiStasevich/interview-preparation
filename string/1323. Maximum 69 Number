@@ -1,0 +1,15 @@
+class Solution {
+    public int maximum69Number (int num) {
+        StringBuilder numString = new StringBuilder(Integer.toString(num));
+        int indexOfFirstSix = numString.indexOf("6");
+        if (indexOfFirstSix == -1) return num;
+        numString.setCharAt(indexOfFirstSix, '9');
+        return Integer.parseInt(numString.toString());
+    }
+}
+
+class Solution {
+    public int maximum69Number (int num) {
+        return Integer.parseInt(Integer.toString(num).replaceFirst("6", "9"));
+    }
+}
