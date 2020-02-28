@@ -1,4 +1,4 @@
-// Draft solution.
+// Draft solution. Add binary search to improve.
 class Solution {
     public int countNegatives(int[][] grid) {
         int count = 0;
